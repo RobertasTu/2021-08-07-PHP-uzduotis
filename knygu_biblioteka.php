@@ -1,5 +1,11 @@
 
 <style>
+
+body {
+    width: 80%;
+    margin: auto;
+}
+
 .mygtukai {
     display: flex;
     padding: 20px;
@@ -170,7 +176,7 @@ function braizykLentele($kategorija, $knyguKolekcija) {
     $index=1;
     echo '<table>';
     echo '<caption>';
-    echo 'Knygu biblioteka';
+    echo 'Knygų biblioteka';
     echo '</caption>';
     echo '<tr>';
     echo '<th>';
@@ -228,7 +234,7 @@ function braizykLentele($kategorija, $knyguKolekcija) {
         $index=1;
         echo '<table>';
         echo '<caption>';
-        echo 'Knygu biblioteka';
+        echo 'Knygų biblioteka';
         echo '</caption>';
         echo '<tr>';
         echo '<th>';
