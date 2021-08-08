@@ -2,7 +2,38 @@
 <style>
 .mygtukai {
     display: flex;
+    padding: 20px;
 }
+
+button {
+    display: inline-block;
+    text-decoration: none;
+    border: 2px solid grey;
+    border-radius: 15px;
+    padding: 10px 5px;
+    transition-duration: 0.4s;
+    background-color: white;
+    margin: 2px;
+}
+
+button:hover {
+    color: black;
+    background-color: #ededed;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    cursor: pointer;
+}
+
+table, th, td {
+    border: 1px solid brown;
+    padding: 5px;
+    border-collapse: collapse;
+    
+}
+
+th, td {
+    text-align: center;
+}
+
 </style>
 
 <?php 
@@ -115,8 +146,7 @@ $knyguKolekcija = array(
 $kategorija = 'visos';
 
 if(isset($_GET['visos'])) {
-    $kategorija = 'visos';
-    braizykLentele($kategorija, $knyguKolekcija);
+     braizykLenteleVisos($knyguKolekcija);
 } else if(isset($_GET['fantastika'])){
     $kategorija = 'fantastika';
     braizykLentele($kategorija, $knyguKolekcija);
@@ -132,11 +162,16 @@ if(isset($_GET['visos'])) {
     }  else if(isset($_GET['poezija'])){
         $kategorija = 'poezija';
         braizykLentele($kategorija, $knyguKolekcija);
+    } else {
+        braizykLenteleVisos($knyguKolekcija);
     }
     
 function braizykLentele($kategorija, $knyguKolekcija) {
     $index=1;
     echo '<table>';
+    echo '<caption>';
+    echo 'Knygu biblioteka';
+    echo '</caption>';
     echo '<tr>';
     echo '<th>';
     echo 'Nr.';
@@ -155,11 +190,11 @@ function braizykLentele($kategorija, $knyguKolekcija) {
     echo '</th>';
     echo '<th>';
     echo 'Kaina';
+    echo '</th>';
      echo '</tr>';
     foreach($knyguKolekcija as $element) {
         if($element['kategorija']==$kategorija){
-            echo '<table>';
-            echo '<tr';
+            echo '<tr>';
             echo '<td>';
             echo $index;
             echo '</td>';
@@ -180,11 +215,73 @@ function braizykLentele($kategorija, $knyguKolekcija) {
             echo '</td>';
             echo '</tr>';
             $index++;
+        }
+            
             
         }
+        
+    echo '</table>';
     }
-    echo '</table';
-}
+
+
+    function braizykLenteleVisos($knyguKolekcija) {
+        $index=1;
+        echo '<table>';
+        echo '<caption>';
+        echo 'Knygu biblioteka';
+        echo '</caption>';
+        echo '<tr>';
+        echo '<th>';
+        echo 'Nr.';
+        echo '</th>';
+        echo '<th>';
+        echo 'Pavadinimas';
+        echo '</th>';
+        echo '<th>';
+        echo 'Autorius';
+        echo '</th>';
+        echo '<th>';
+        echo 'Puslapių skaičius';
+        echo '</th>';
+        echo '<th>';
+        echo 'Kategorija';
+        echo '</th>';
+        echo '<th>';
+        echo 'Kaina';
+        echo '</th>';
+         echo '</tr>';
+        foreach($knyguKolekcija as $element) {
+                echo '<tr>';
+                echo '<td>';
+                echo $index;
+                echo '</td>';
+                echo '<td>';
+                echo $element['pavadinimas'];
+                echo '</td>';
+                echo '<td>';
+                echo $element['autorius'];
+                echo '</td>';
+                echo '<td>';
+                echo $element['puslapiuSk'];
+                echo '</td>';
+                echo '<td>';
+                echo $element['kategorija'];
+                echo '</td>';
+                echo '<td>';
+                echo $element['kaina'];
+                echo '</td>';
+                echo '</tr>';
+                $index++;
+            }
+                
+                
+            
+            
+        echo '</table>';
+        }
+
+
+
 
 ?>
 
