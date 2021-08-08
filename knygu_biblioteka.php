@@ -49,17 +49,17 @@ th, td {
 // 5. Sukurti mygtukai turi išfiltruoti knygas. T.y. paspaudus kategorijos mygtuką, lentelėje turi būti rodomos tik tos knygos, kurios priklauso tai kategorijai. Paspaudus mygtuką "Rodyti visas knygas", atvaizduojamos visos knygos.  
 
 echo '<div class="mygtukai">';
-echo '<form action="knygu_biblioteka.php" method="get"><button type="submit" name="visos">Visos kategorijos</button>
+echo '<form action="knygu_biblioteka.php" method="post"><button type="submit" name="visos">Visos kategorijos</button>
 </form>';
-echo '<form action="knygu_biblioteka.php" method="get"><button type="submit" name="fantastika">Fantastika</button>
+echo '<form action="knygu_biblioteka.php" method="post"><button type="submit" name="fantastika">Fantastika</button>
 </form>';
-echo '<form action="knygu_biblioteka.php" method="get"><button type="submit" name="detektyvai">Detektyvai</button>
+echo '<form action="knygu_biblioteka.php" method="post"><button type="submit" name="detektyvai">Detektyvai</button>
 </form>';
-echo '<form action="knygu_biblioteka.php" method="get"><button type="submit" name="trileriai">Trileriai</button>
+echo '<form action="knygu_biblioteka.php" method="post"><button type="submit" name="trileriai">Trileriai</button>
 </form>';
-echo '<form action="knygu_biblioteka.php" method="get"><button type="submit" name="klasika">Klasika</button>
+echo '<form action="knygu_biblioteka.php" method="post"><button type="submit" name="klasika">Klasika</button>
 </form>';
-echo '<form action="knygu_biblioteka.php" method="get"><button type="submit" name="poezija">Poezija</button>
+echo '<form action="knygu_biblioteka.php" method="post"><button type="submit" name="poezija">Poezija</button>
 </form>';
 echo '</div>';
 
@@ -145,21 +145,21 @@ $knyguKolekcija = array(
 
 $kategorija = 'visos';
 
-if(isset($_GET['visos'])) {
+if(isset($_POST['visos'])) {
      braizykLenteleVisos($knyguKolekcija);
-} else if(isset($_GET['fantastika'])){
+} else if(isset($_POST['fantastika'])){
     $kategorija = 'fantastika';
     braizykLentele($kategorija, $knyguKolekcija);
-} else if(isset($_GET['detektyvai'])){
+} else if(isset($_POST['detektyvai'])){
     $kategorija = 'detektyvai';
     braizykLentele($kategorija, $knyguKolekcija);
-  }  else if(isset($_GET['trileriai'])){
+  }  else if(isset($_POST['trileriai'])){
         $kategorija = 'trileriai';
         braizykLentele($kategorija, $knyguKolekcija);
-    }  else if(isset($_GET['klasika'])){
+    }  else if(isset($_POST['klasika'])){
         $kategorija = 'klasika';
         braizykLentele($kategorija, $knyguKolekcija);
-    }  else if(isset($_GET['poezija'])){
+    }  else if(isset($_POST['poezija'])){
         $kategorija = 'poezija';
         braizykLentele($kategorija, $knyguKolekcija);
     } else {
